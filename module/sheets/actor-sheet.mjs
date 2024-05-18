@@ -79,9 +79,9 @@ export class ThresholdActorSheet extends ActorSheet {
    */
   _prepareCharacterData(context) {
     // Handle ability scores.
-    for (let [k, v] of Object.entries(context.system.abilities)) {
-      v.label = game.i18n.localize(CONFIG.THRESHOLD.abilities[k]) ?? k;
-    }
+    // for (let [k, v] of Object.entries(context.system.abilities)) {
+    //   v.label = game.i18n.localize(CONFIG.THRESHOLD.abilities[k]) ?? k;
+    // }
   }
 
   /**

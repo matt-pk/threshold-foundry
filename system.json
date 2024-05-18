@@ -4,12 +4,12 @@
   "description": "The Threshold system for FoundryVTT!",
   "authors": [
     {
-      "name": "Matt Provan-Koch",
-      "discord": "yeah_ok_nice"
-    },
-    {
       "name": "Atropos",
       "url": "https://foundryvtt.com"
+    },
+    {
+      "name": "Matt Provan-Koch",
+      "discord": "yeah_ok_nice"
     }
   ],
   "url": "https://github.com/matt-pk/threshold-foundry/",
@@ -45,11 +45,11 @@
   "packs": [],
   "packFolders": [],
   "socket": false,
-  "manifest": "Replace this with a link to the /latest release system.json so people can receive updates after they've installed the system",
+  "manifest": "https://github.com/matt-pk/threshold-foundry/blob/main/system.json",
   "download": "This must link to a .zip file of the current version",
   "background": "systems/threshold/assets/anvil-impact.png",
-  "gridDistance": 5,
-  "gridUnits": "ft",
+  "gridDistance": 1,
+  "gridUnits": "m",
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "power"
 }
