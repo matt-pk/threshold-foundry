@@ -14,7 +14,8 @@ import * as models from './data/_module.mjs';
 /*  Init Hook                                   */
 /* -------------------------------------------- */
 
-Hooks.once('init', function () {
+Hooks.once('init', function ()
+{
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
   game.threshold = {
@@ -31,7 +32,7 @@ Hooks.once('init', function () {
    * @type {String}
    */
   CONFIG.Combat.initiative = {
-    formula: '1d20 + @abilities.dex.mod',
+    formula: '1d20',
     decimals: 2,
   };
 
@@ -78,7 +79,8 @@ Hooks.once('init', function () {
 /* -------------------------------------------- */
 
 // If you need to add Handlebars helpers, here is a useful example:
-Handlebars.registerHelper('toLowerCase', function (str) {
+Handlebars.registerHelper('toLowerCase', function (str)
+{
   return str.toLowerCase();
 });
 
@@ -86,7 +88,8 @@ Handlebars.registerHelper('toLowerCase', function (str) {
 /*  Ready Hook                                  */
 /* -------------------------------------------- */
 
-Hooks.once('ready', function () {
+Hooks.once('ready', function ()
+{
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on('hotbarDrop', (bar, data, slot) => createItemMacro(data, slot));
 });
@@ -102,10 +105,12 @@ Hooks.once('ready', function () {
  * @param {number} slot     The hotbar slot to use
  * @returns {Promise}
  */
-async function createItemMacro(data, slot) {
+async function createItemMacro(data, slot)
+{
   // First, determine if this is a valid owned item.
   if (data.type !== 'Item') return;
-  if (!data.uuid.includes('Actor.') && !data.uuid.includes('Token.')) {
+  if (!data.uuid.includes('Actor.') && !data.uuid.includes('Token.'))
+  {
     return ui.notifications.warn(
       'You can only create macro buttons for owned Items'
     );
@@ -118,7 +123,8 @@ async function createItemMacro(data, slot) {
   let macro = game.macros.find(
     (m) => m.name === item.name && m.command === command
   );
-  if (!macro) {
+  if (!macro)
+  {
     macro = await Macro.create({
       name: item.name,
       type: 'script',
@@ -136,16 +142,19 @@ async function createItemMacro(data, slot) {
  * Get an existing item macro if one exists, otherwise create a new one.
  * @param {string} itemUuid
  */
-function rollItemMacro(itemUuid) {
+function rollItemMacro(itemUuid)
+{
   // Reconstruct the drop data so that we can load the item.
   const dropData = {
     type: 'Item',
     uuid: itemUuid,
   };
   // Load the item from the uuid.
-  Item.fromDropData(dropData).then((item) => {
+  Item.fromDropData(dropData).then((item) =>
+  {
     // Determine if the item loaded and if it's an owned item.
-    if (!item || !item.parent) {
+    if (!item || !item.parent)
+    {
       const itemName = item?.name ?? itemUuid;
       return ui.notifications.warn(
         `Could not find item ${itemName}. You may need to delete and recreate this macro.`

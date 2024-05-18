@@ -5,19 +5,19 @@ export const THRESHOLD = {};
  * @type {Object}
  */
 THRESHOLD.abilities = {
-  str: 'THRESHOLD.Ability.Str.long',
-  dex: 'THRESHOLD.Ability.Dex.long',
-  con: 'THRESHOLD.Ability.Con.long',
-  int: 'THRESHOLD.Ability.Int.long',
-  wis: 'THRESHOLD.Ability.Wis.long',
+  ath: 'THRESHOLD.Ability.Ath.long',
+  sta: 'THRESHOLD.Ability.Sta.long',
+  acu: 'THRESHOLD.Ability.Acu.long',
+  wil: 'THRESHOLD.Ability.Wil.long',
   cha: 'THRESHOLD.Ability.Cha.long',
+  per: 'THRESHOLD.Ability.Per.long',
 };
 
 THRESHOLD.abilityAbbreviations = {
-  str: 'THRESHOLD.Ability.Str.abbr',
-  dex: 'THRESHOLD.Ability.Dex.abbr',
-  con: 'THRESHOLD.Ability.Con.abbr',
-  int: 'THRESHOLD.Ability.Int.abbr',
-  wis: 'THRESHOLD.Ability.Wis.abbr',
+  ath: 'THRESHOLD.Ability.Ath.abbr',
+  sta: 'THRESHOLD.Ability.Sta.abbr',
+  acu: 'THRESHOLD.Ability.Acu.abbr',
+  wil: 'THRESHOLD.Ability.Wil.abbr',
   cha: 'THRESHOLD.Ability.Cha.abbr',
+  per: 'THRESHOLD.Ability.Per.abbr',
 };

@@ -1,12 +1,30 @@
 {
   "THRESHOLD": {
     "Ability": {
-      "Str": { "long": "Strength", "abbr": "str" },
-      "Con": { "long": "Constitution", "abbr": "con" },
-      "Dex": { "long": "Dexterity", "abbr": "dex" },
-      "Int": { "long": "Intelligence", "abbr": "int" },
-      "Wis": { "long": "Wisdom", "abbr": "wis" },
-      "Cha": { "long": "Charisma", "abbr": "cha" }
+      "Ath": {
+        "long": "Athleticism",
+        "abbr": "ath"
+      },
+      "Sta": {
+        "long": "Stamina",
+        "abbr": "sta"
+      },
+      "Acu": {
+        "long": "Acumen",
+        "abbr": "acu"
+      },
+      "Wil": {
+        "long": "Willpower",
+        "abbr": "wil"
+      },
+      "Cha": {
+        "long": "Charisma",
+        "abbr": "cha"
+      },
+      "Per": {
+        "long": "Perception",
+        "abbr": "per"
+      }
     },
     "SheetLabels": {
       "Actor": "Threshold Actor Sheet",
@@ -26,7 +44,6 @@
       "Inactive": "Inactive Effects"
     }
   },
-
   "TYPES": {
     "Actor": {
       "character": "Character",

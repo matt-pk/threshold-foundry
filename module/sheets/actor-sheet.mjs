@@ -1,4 +1,5 @@
-import {
+import
+{
   onManageActiveEffect,
   prepareActiveEffectCategories,
 } from '../helpers/effects.mjs';
@@ -7,9 +8,11 @@ import {
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class ThresholdActorSheet extends ActorSheet {
+export class ThresholdActorSheet extends ActorSheet
+{
   /** @override */
-  static get defaultOptions() {
+  static get defaultOptions()
+  {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['threshold', 'sheet', 'actor'],
       width: 600,
@@ -25,14 +28,16 @@ export class ThresholdActorSheet extends ActorSheet {
   }
 
   /** @override */
-  get template() {
+  get template()
+  {
     return `systems/threshold/templates/actor/actor-${this.actor.type}-sheet.hbs`;
   }
 
   /* -------------------------------------------- */
 
   /** @override */
-  getData() {
+  getData()
+  {
     // Retrieve the data structure from the base sheet. You can inspect or log
     // the context variable to see the structure, but some key properties for
     // sheets are the actor object, the data object, whether or not it's
@@ -47,13 +52,15 @@ export class ThresholdActorSheet extends ActorSheet {
     context.flags = actorData.flags;
 
     // Prepare character data and items.
-    if (actorData.type == 'character') {
+    if (actorData.type == 'character')
+    {
       this._prepareItems(context);
       this._prepareCharacterData(context);
     }
 
     // Prepare NPC data and items.
-    if (actorData.type == 'npc') {
+    if (actorData.type == 'npc')
+    {
       this._prepareItems(context);
     }
 
@@ -77,11 +84,14 @@ export class ThresholdActorSheet extends ActorSheet {
    *
    * @return {undefined}
    */
-  _prepareCharacterData(context) {
+  _prepareCharacterData(context)
+  {
     // Handle ability scores.
     // for (let [k, v] of Object.entries(context.system.abilities)) {
     //   v.label = game.i18n.localize(CONFIG.THRESHOLD.abilities[k]) ?? k;
     // }
+    context.testStr = "TEST";
+    context.dieChoices = { "4": "d4", "6": "d6", "8": "d8", "10": "d10", "12": "d12" };
   }
 
   /**
@@ -91,7 +101,8 @@ export class ThresholdActorSheet extends ActorSheet {
    *
    * @return {undefined}
    */
-  _prepareItems(context) {
+  _prepareItems(context)
+  {
     // Initialize containers.
     const gear = [];
     const features = [];
@@ -109,19 +120,24 @@ export class ThresholdActorSheet extends ActorSheet {
     };
 
     // Iterate through items, allocating to containers
-    for (let i of context.items) {
+    for (let i of context.items)
+    {
       i.img = i.img || Item.DEFAULT_ICON;
       // Append to gear.
-      if (i.type === 'item') {
+      if (i.type === 'item')
+      {
         gear.push(i);
       }
       // Append to features.
-      else if (i.type === 'feature') {
+      else if (i.type === 'feature')
+      {
         features.push(i);
       }
       // Append to spells.
-      else if (i.type === 'spell') {
-        if (i.system.spellLevel != undefined) {
+      else if (i.type === 'spell')
+      {
+        if (i.system.spellLevel != undefined)
+        {
           spells[i.system.spellLevel].push(i);
         }
       }
@@ -136,11 +152,13 @@ export class ThresholdActorSheet extends ActorSheet {
   /* -------------------------------------------- */
 
   /** @override */
-  activateListeners(html) {
+  activateListeners(html)
+  {
     super.activateListeners(html);
 
     // Render the item sheet for viewing/editing prior to the editable check.
-    html.on('click', '.item-edit', (ev) => {
+    html.on('click', '.item-edit', (ev) =>
+    {
       const li = $(ev.currentTarget).parents('.item');
       const item = this.actor.items.get(li.data('itemId'));
       item.sheet.render(true);
@@ -154,7 +172,8 @@ export class ThresholdActorSheet extends ActorSheet {
     html.on('click', '.item-create', this._onItemCreate.bind(this));
 
     // Delete Inventory Item
-    html.on('click', '.item-delete', (ev) => {
+    html.on('click', '.item-delete', (ev) =>
+    {
       const li = $(ev.currentTarget).parents('.item');
       const item = this.actor.items.get(li.data('itemId'));
       item.delete();
@@ -162,7 +181,8 @@ export class ThresholdActorSheet extends ActorSheet {
     });
 
     // Active Effect management
-    html.on('click', '.effect-control', (ev) => {
+    html.on('click', '.effect-control', (ev) =>
+    {
       const row = ev.currentTarget.closest('li');
       const document =
         row.dataset.parentId === this.actor.id
@@ -175,9 +195,11 @@ export class ThresholdActorSheet extends ActorSheet {
     html.on('click', '.rollable', this._onRoll.bind(this));
 
     // Drag events for macros.
-    if (this.actor.isOwner) {
+    if (this.actor.isOwner)
+    {
       let handler = (ev) => this._onDragStart(ev);
-      html.find('li.item').each((i, li) => {
+      html.find('li.item').each((i, li) =>
+      {
         if (li.classList.contains('inventory-header')) return;
         li.setAttribute('draggable', true);
         li.addEventListener('dragstart', handler, false);
@@ -190,7 +212,8 @@ export class ThresholdActorSheet extends ActorSheet {
    * @param {Event} event   The originating click event
    * @private
    */
-  async _onItemCreate(event) {
+  async _onItemCreate(event)
+  {
     event.preventDefault();
     const header = event.currentTarget;
     // Get the type of item to create.
@@ -217,14 +240,17 @@ export class ThresholdActorSheet extends ActorSheet {
    * @param {Event} event   The originating click event
    * @private
    */
-  _onRoll(event) {
+  _onRoll(event)
+  {
     event.preventDefault();
     const element = event.currentTarget;
     const dataset = element.dataset;
 
     // Handle item rolls.
-    if (dataset.rollType) {
-      if (dataset.rollType == 'item') {
+    if (dataset.rollType)
+    {
+      if (dataset.rollType == 'item')
+      {
         const itemId = element.closest('.item').dataset.itemId;
         const item = this.actor.items.get(itemId);
         if (item) return item.roll();
@@ -232,7 +258,8 @@ export class ThresholdActorSheet extends ActorSheet {
     }
 
     // Handle rolls that supply the formula directly.
-    if (dataset.roll) {
+    if (dataset.roll)
+    {
       let label = dataset.label ? `[ability] ${dataset.label}` : '';
       let roll = new Roll(dataset.roll, this.actor.getRollData());
       roll.toMessage({
