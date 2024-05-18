@@ -194,6 +194,9 @@ export class ThresholdActorSheet extends ActorSheet
     // Rollable abilities.
     html.on('click', '.rollable', this._onRoll.bind(this));
 
+    // Rollable attributes
+    html.on('click', '.rollattr', this._onAttributeRoll.bind(this));
+
     // Drag events for macros.
     if (this.actor.isOwner)
     {
@@ -256,6 +259,31 @@ export class ThresholdActorSheet extends ActorSheet
         if (item) return item.roll();
       }
     }
+
+    // Handle rolls that supply the formula directly.
+    if (dataset.roll)
+    {
+      let label = dataset.label ? `[ability] ${dataset.label}` : '';
+      let roll = new Roll(dataset.roll, this.actor.getRollData());
+      roll.toMessage({
+        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+        flavor: label,
+        rollMode: game.settings.get('core', 'rollMode'),
+      });
+      return roll;
+    }
+  }
+
+  /**
+   * Handle clickable attributes.
+   * @param {Event} event   The originating click event
+   * @private
+   */
+  _onAttributeRoll(event)
+  {
+    event.preventDefault();
+    const element = event.currentTarget;
+    const dataset = element.dataset;
 
     // Handle rolls that supply the formula directly.
     if (dataset.roll)
