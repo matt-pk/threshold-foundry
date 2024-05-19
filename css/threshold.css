@@ -1,10 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
 /* Global styles */
 .window-app {
   font-family: "Roboto", sans-serif;
 }
 
-.rollable:hover, .rollable:focus {
+.rollable:hover,
+.rollable:focus {
+  color: #000;
+  text-shadow: 0 0 10px red;
+  cursor: pointer;
+}
+
+.rollattr:hover,
+.rollattr:focus {
   color: #000;
   text-shadow: 0 0 10px red;
   cursor: pointer;
@@ -207,6 +216,7 @@
 .threshold .item-form {
   font-family: "Roboto", sans-serif;
 }
+
 .threshold .sheet-header {
   flex: 0 auto;
   overflow: hidden;
@@ -216,42 +226,52 @@
   justify-content: flex-start;
   margin-bottom: 10px;
 }
+
 .threshold .sheet-header .profile-img {
   flex: 0 0 100px;
   height: 100px;
   margin-right: 10px;
 }
+
 .threshold .sheet-header .header-fields {
   flex: 1;
 }
+
 .threshold .sheet-header h1.charname {
   height: 50px;
   padding: 0px;
   margin: 5px 0;
   border-bottom: 0;
 }
+
 .threshold .sheet-header h1.charname input {
   width: 100%;
   height: 100%;
   margin: 0;
 }
+
 .threshold .sheet-tabs {
   flex: 0;
 }
+
 .threshold .sheet-body,
 .threshold .sheet-body .tab,
 .threshold .sheet-body .tab .editor {
   height: 100%;
 }
+
 .threshold .tox .tox-editor-container {
   background: #fff;
 }
+
 .threshold .tox .tox-edit-area {
   padding: 0 8px;
 }
+
 .threshold .resource-label {
   font-weight: bold;
 }
+
 .threshold .items-header {
   height: 28px;
   margin: 2px 0;
@@ -261,16 +281,19 @@
   border: 2px groove #eeede0;
   font-weight: bold;
 }
-.threshold .items-header > * {
+
+.threshold .items-header>* {
   font-size: 14px;
   text-align: center;
 }
+
 .threshold .items-header .item-name {
   font-weight: bold;
   padding-left: 5px;
   text-align: left;
   display: flex;
 }
+
 .threshold .items-list {
   list-style: none;
   margin: 0;
@@ -279,11 +302,13 @@
   scrollbar-width: thin;
   color: #444;
 }
+
 .threshold .items-list .item-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
+
 .threshold .items-list .item-name {
   flex: 2;
   margin: 0;
@@ -293,32 +318,40 @@
   align-items: center;
   display: flex;
 }
-.threshold .items-list .item-name h3, .threshold .items-list .item-name h4 {
+
+.threshold .items-list .item-name h3,
+.threshold .items-list .item-name h4 {
   margin: 0;
   white-space: nowrap;
   overflow-x: hidden;
 }
+
 .threshold .items-list .item-controls {
   display: flex;
   flex: 0 0 100px;
   justify-content: flex-end;
 }
+
 .threshold .items-list .item-controls a {
   font-size: 12px;
   text-align: center;
   margin: 0 6px;
 }
+
 .threshold .items-list .item {
   align-items: center;
   padding: 0 2px;
   border-bottom: 1px solid #c9c7b8;
 }
+
 .threshold .items-list .item:last-child {
   border-bottom: none;
 }
+
 .threshold .items-list .item .item-name {
   color: #191813;
 }
+
 .threshold .items-list .item .item-name .item-image {
   flex: 0 0 30px;
   height: 30px;
@@ -326,12 +359,14 @@
   border: none;
   margin-right: 5px;
 }
+
 .threshold .items-list .item-prop {
   text-align: center;
   border-left: 1px solid #c9c7b8;
   border-right: 1px solid #c9c7b8;
   font-size: 12px;
 }
+
 .threshold .items-list .items-header {
   height: 28px;
   margin: 2px 0;
@@ -341,18 +376,22 @@
   border: 2px groove #eeede0;
   font-weight: bold;
 }
-.threshold .items-list .items-header > * {
+
+.threshold .items-list .items-header>* {
   font-size: 12px;
   text-align: center;
 }
+
 .threshold .items-list .items-header .item-name {
   padding-left: 5px;
   text-align: left;
 }
+
 .threshold .item-formula {
   flex: 0 0 200px;
   padding: 0 8px;
 }
+
 .threshold .effects .item .effect-source,
 .threshold .effects .item .effect-duration,
 .threshold .effects .item .effect-controls {
@@ -361,6 +400,7 @@
   border-right: 1px solid #c9c7b8;
   font-size: 12px;
 }
+
 .threshold .effects .item .effect-controls {
   border: none;
 }

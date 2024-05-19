@@ -285,11 +285,11 @@ export class ThresholdActorSheet extends ActorSheet
     const element = event.currentTarget;
     const dataset = element.dataset;
 
-    // Handle rolls that supply the formula directly.
     if (dataset.roll)
     {
       let label = dataset.label ? `[ability] ${dataset.label}` : '';
       let roll = new Roll(dataset.roll, this.actor.getRollData());
+      console.log(roll);
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label,
